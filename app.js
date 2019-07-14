@@ -7,6 +7,7 @@ const mongoose = require('mongoose')
 const Message = require('./models/message')
 const router = express.Router();
 const port = process.env.PORT || 9000;
+require('dotenv').config();
 
 
 const app = express();
@@ -26,8 +27,20 @@ mongoose.Promise = global.Promise;
 //   app.get('*', (req, res) => { res.sendfile(path.join(__dirname = 'client/build/index.html')); })
 // }
 // app.get('*', (req, res) => {  res.sendFile(path.join(__dirname+'/client/public/index.html'));})
-app.listen(port, (req, res) => {console.log("server for app started on " + {port})})
+
 app.use(cors());
+app.use(bodyParser.json());
+
+router.use(express.json());
+
+app.use(express.static(path.join(__dirname, "client", "build" )));
+
+
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, "client", "build", "index.html")); //relative path
+});
+app.listen(port, (req, res) => { console.log("server for app started on " + { port }) })
+
 // let messages =   [{
 //     "id": shortid.generate(), 
 //     "text": "Hello!"
@@ -53,7 +66,7 @@ app.put('/', async (req, res, next) => {
   }
 });
 
-app.use(bodyParser.json());
+
 
 //this is when we're adding a new message, body is what we're sent and we just want the text
 //make a new message with that text and save it to the db
@@ -91,15 +104,7 @@ let j = bodyParser.json();
 // });
 
 
-router.use(express.json());
 
-if (process.env.NODE_ENV === 'production') {
-  app.use(express.static( 'client/build' ));
-
-  app.get('*', (req, res) => {
-    res.sendFile(path.join(__dirname, 'client', 'build', 'index.html')); //relative path
-  });
-}
 
 
 module.exports = app;
