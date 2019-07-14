@@ -23,7 +23,6 @@
     "dotenv": "^8.0.0"
   },
   "engines": {
-    "node":"10.16.0"
-  },
-  "proxy": "http://localhost:9000/"
+    "node": "10.16.0"
+  }
 }

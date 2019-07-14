@@ -7,7 +7,7 @@ const mongoose = require('mongoose')
 const Message = require('./models/message')
 const router = express.Router();
 const port = process.env.PORT || 9000;
-require('dotenv').config();
+const dotenv = require('dotenv').config();
 
 
 const app = express();
