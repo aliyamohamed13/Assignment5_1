@@ -81,14 +81,14 @@ app.post('/', async (req, res) => {
 
 
 
-app.get('/', async (req, res, next) => {
-  try {
-    const messages = await Message.find();
-    res.json(messages);
-  } catch (err) {
-    res.status(500).json({message: err.message})
-  }
-});
+// app.get('/', async (req, res, next) => {
+//   try {
+//     const messages = await Message.find();
+//     res.json(messages);
+//   } catch (err) {
+//     res.status(500).json({message: err.message})
+//   }
+// });
 
 
 let j = bodyParser.json();
