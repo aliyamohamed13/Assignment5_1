@@ -98,21 +98,20 @@ let j = bodyParser.json();
 //   res.json(messages);
 // });
 
-// if (process.env.NODE_ENV === 'production') {
-//   app.use(express.static( 'client/build' ));
+if (process.env.NODE_ENV === 'production') {
+  app.use(express.static( 'client/build' ));
 
-//   app.get('*', (req, res) => {
-//     res.sendFile(path.join(__dirname, 'client', 'build', 'index.html')); //relative path
-//   });
-// }
+  app.get('*', (req, res) => {
+    res.sendFile(path.join(__dirname, 'client', 'build', 'index.html')); //relative path
+  });
+}
 
-app.use(express.static(path.join(__dirname, "client", "build")))
+// app.use(express.static(path.join(__dirname, "client", "build")))
 
-// ...
-// Right before your app.listen(), add this:
-app.get("*", (req, res) => {
-    res.sendFile(path.join(__dirname, "client", "build", "index.html"));
-});
+// // ...
+// app.get("*", (req, res) => {
+//     res.sendFile(path.join(__dirname, "client", "build", "index.html"));
+// });
 
 app.listen(port, (req, res) => {console.log("server for app started on " + {port})})
 
