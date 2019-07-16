@@ -17,20 +17,20 @@ class MessageList extends React.Component {
   }
   componentDidMount() {
     this.callAPI();
-    // if (this.props.todos.length === 0) {
-    //   let messages = ["Hello!", "How are you?!"]
-    //   messages.forEach(async (element) =>
-    //     await fetch('http://localhost:9000/', {
-    //       method: "POST",
-    //       headers: { "Content-Type": "application/json" },
-    //       body: JSON.stringify(
-    //         {
-    //           text: element
-    //         })
-    //     })
-    //       .then(res => res.json())
-    //       .then(body => this.props.dispatch(addMessage(body.text)))
-    //   )}
+    if (this.props.todos.length === 0) {
+      let messages = ["Hello!", "How are you?!"]
+      messages.forEach(async (element) =>
+        await fetch('http://localhost:9000/', {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(
+            {
+              text: element
+            })
+        })
+          .then(res => res.json())
+          .then(body => this.props.dispatch(addMessage(body.text)))
+      )}
   }
 
   // 

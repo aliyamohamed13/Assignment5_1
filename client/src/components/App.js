@@ -23,7 +23,7 @@ class App extends React.Component {
   render() {
     return (
       <div style={entire}>
-        <h1 style={header}>Hello! Welcome to this Messages Page!</h1>
+        <h1 style={header}>Welcome to this Messages Page!</h1>
         <AddMessage />
         <MessageList />
         {/* <p className="App-intro">{this.state.apiResponse}</p> */}
@@ -34,7 +34,6 @@ class App extends React.Component {
 
 const entire = 
 {
-  color: 'grey',
   textAlign: 'center',
   margin: '0',
   padding: '0',
