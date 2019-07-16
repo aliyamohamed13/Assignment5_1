@@ -9,7 +9,7 @@ const AddMessage = ({ dispatch }) => {
   let input;
 
   let putMessage = async (e) => {
-    await fetch('http://localhost:9000/', {
+    await fetch('http://localhost:9000/api/messages', {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(
@@ -32,7 +32,7 @@ const AddMessage = ({ dispatch }) => {
   };
 
   let clearMessages = async (e) => {
-    await fetch('http://localhost:9000/', {
+    await fetch('http://localhost:9000/api/messages', {
       method: "PUT",
       body: JSON.stringify(),
       headers : { 

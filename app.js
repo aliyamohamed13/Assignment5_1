@@ -48,7 +48,7 @@ router.use(express.json());
 
 //clear all button implementation
 //for every message in the database, remove that message and return that
-app.put('/', async (req, res, next) => {
+app.put('/api/messages', async (req, res, next) => {
   try {
     const messages = await Message.find();
     let emptyArr = messages.forEach(element => {
@@ -65,7 +65,7 @@ app.put('/', async (req, res, next) => {
 
 //this is when we're adding a new message, body is what we're sent and we just want the text
 //make a new message with that text and save it to the db
-app.post('/', async (req, res) => {
+app.post('/api/messages', async (req, res) => {
   const message = new Message({
     text: req.body.text
   })
@@ -81,7 +81,7 @@ app.post('/', async (req, res) => {
 
 
 
-app.get('/', async (req, res, next) => {
+app.get('/api/messages', async (req, res, next) => {
   try {
     const messages = await Message.find();
     res.json(messages);

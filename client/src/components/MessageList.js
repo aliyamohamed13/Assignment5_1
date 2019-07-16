@@ -8,7 +8,7 @@ import { addMessage } from "../actions/todo.actions";
 
 class MessageList extends React.Component {
   callAPI() {
-    fetch("http://localhost:9000/")
+    fetch("http://localhost:9000/api/messages")
       .then(res => res.json())
       .then(data => {
         this.props.dispatch(fetchInit(data))
